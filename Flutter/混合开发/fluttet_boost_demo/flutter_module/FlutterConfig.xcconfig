@@ -1,0 +1,12 @@
+//
+//  FlutterConfig.xcconfig
+//  FlutterBoostDemo
+//
+//  Created by ddhMacMini on 2020/7/27.
+//  Copyright © 2020 ddhMacMini. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+#include "./.ios/Flutter/Generated.xcconfig"

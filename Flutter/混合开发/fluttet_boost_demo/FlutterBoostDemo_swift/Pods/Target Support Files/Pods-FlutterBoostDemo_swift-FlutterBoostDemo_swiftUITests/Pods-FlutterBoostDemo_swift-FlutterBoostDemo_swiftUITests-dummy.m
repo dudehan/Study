@@ -1,0 +1,5 @@
+#import <Foundation/Foundation.h>
+@interface PodsDummy_Pods_FlutterBoostDemo_swift_FlutterBoostDemo_swiftUITests : NSObject
+@end
+@implementation PodsDummy_Pods_FlutterBoostDemo_swift_FlutterBoostDemo_swiftUITests
+@end
