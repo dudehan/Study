@@ -45,10 +45,20 @@ class _FirstPageState extends State<FirstPage> {
               child: Text('insert'),
             ),
             RaisedButton(
+              onPressed: _insertString,
+              child: Text('insertString'),
+            ),
+            RaisedButton(
               onPressed: () {
                 _query('wallet_0', 'coins0');
               },
               child: Text('查询'),
+            ),
+            RaisedButton(
+              onPressed: () {
+                _query('wallet_0', 'string0');
+              },
+              child: Text('查询1'),
             ),
             RaisedButton(
               onPressed: () {
@@ -126,12 +136,24 @@ _modify(String table, String key) async {
 _insert() async {
   for (int i = 0; i < 5; i++) {
     await WXDataBaseUtil.insert(
-        'wallet_0', 'coins$i', "{'name': 'wallet_$i', 'value': 'gouDan_$i'}");
+        'wallet_0', 'coins$i', {'name': 'wallet_$i', 'value': 'gouDan_$i'});
+  }
+}
+_insertString() async {
+  for (int i = 0; i < 5; i++) {
+    await WXDataBaseUtil.insert(
+            'wallet_0', 'string$i', "{'name': 'wallet_$i', 'value': 'gouDan_$i'}");
   }
 }
 
 _query(String tableName, String key) async {
   dynamic data = await WXDataBaseUtil.query(tableName, key);
+  if(data is Map) {
+    print('Map ....');
+  }
+  if(data is String) {
+    print('string ....');
+  }
   // dynamic data = await WXWalletDB.getWalletDataWithKey(tableName, key);
   print('data ==== $data');
 }

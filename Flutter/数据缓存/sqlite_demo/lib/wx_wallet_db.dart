@@ -11,6 +11,7 @@ class WXDataBaseUtil {
 
   /// 插入数据(如果存在此字段则直接替换)
   static insert(String table, String key, dynamic data) async {
+    if(data == null) return;
     /// 打开数据库
     bool isExist = await isTableExist(table);
     if (!isExist) {
@@ -25,6 +26,7 @@ class WXDataBaseUtil {
         where: '$DataPersistenceKey = ?',
         whereArgs: [key]);
 
+    // String jsonString = data is String ? data : json.encode(data);
     String jsonString = json.encode(data);
     if (list.length > 0) {
       /// 存在则更新
@@ -47,7 +49,6 @@ class WXDataBaseUtil {
       _tableAssert(table, isExist);
       return null;
     }
-    print('xxx');
     Database db = await _openDatabase();
     /// 获取数据库数据
     List result = await db.query(table,

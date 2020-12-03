@@ -35,8 +35,9 @@ class Home extends StatelessWidget {
 
 Route unknownRoute(RouteSettings settings) {
   if (settings.name == '/') return null;
-  return WXDialogRoute(
+  return PageRouteBuilder(
     transitionDuration: Duration(milliseconds: 200),
+    opaque: false,
     pageBuilder: (context, animation, secondaryAnimation) {
       return FadeTransition(
         opacity: animation,
